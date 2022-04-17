@@ -3,8 +3,14 @@
   <div><span>id: </span>{{ hero.id }}</div>
   <div><span>name: </span>{{ hero.name }}</div>
 
-  <div>
+  <div class="form">
     <label for="name">Hero name:</label>
     <input id="name" [(ngModel)]="hero.name" placeholder="name" type="text" />
+  </div>
+
+  <div>
+    <button mat-raised-button color="secondary" (click)="goBack()">
+      Go Back
+    </button>
   </div>
 </div>

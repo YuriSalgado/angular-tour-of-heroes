@@ -1,0 +1,11 @@
+<h1>Dashboard</h1>
+
+<div fxLayout fxLayout.xs="column" fxLayoutAlign="space-between">
+  <mat-card
+    class="card"
+    *ngFor="let hero of heroes"
+    routerLink="/heroes/{{ hero.id }}"
+  >
+    <mat-card-title>{{ hero.name }}</mat-card-title>
+  </mat-card>
+</div>

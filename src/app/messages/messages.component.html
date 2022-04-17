@@ -1,5 +1,5 @@
+<h2>Messages</h2>
 <div *ngIf="messageService.getMessages().length">
-  <h2>Messages</h2>
   <p>
     <button mat-raised-button (click)="messageService.clear()" color="warn">
       Clear {{ messageService.getMessages().length }} messages
