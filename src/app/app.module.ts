@@ -5,8 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CoreModule } from './core/core.module';
-import { DashboardModule } from './dashboard/dashboard.module';
-import { HeroesModule } from './heroes/heroes.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,10 +17,6 @@ import { HeroesModule } from './heroes/heroes.module';
     // app
     AppRoutingModule,
     CoreModule,
-
-    // feature
-    DashboardModule,
-    HeroesModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

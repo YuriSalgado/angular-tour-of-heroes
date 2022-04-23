@@ -5,11 +5,11 @@ import { HeroesComponent } from './components/heroes/heroes.component';
 
 const routes: Routes = [
   {
-    path: 'heroes',
+    path: '',
     component: HeroesComponent,
   },
   {
-    path: 'heroes/:id',
+    path: ':id',
     component: HeroDetailComponent,
   },
 ];
