@@ -21,10 +21,6 @@ export class HeroService {
     return this.http
       .get<Hero[]>(this.heroesUrl)
       .pipe(tap((heroes) => this.log(`fetched ${heroes.length} heroes`)));
-
-    // const heroes = of(HEROES);
-    // this.log('fetched heroes');
-    // return heroes;
   }
 
   getHero(id: number): Observable<Hero> {
@@ -35,10 +31,6 @@ export class HeroService {
           this.log(`fetched head id=${hero.name} and name=${hero.name}`)
         )
       );
-
-    // const hero = HEROES.find((hero) => hero.id === id)!;
-    // this.log(`fetched hero id=${id}`);
-    // return of(hero);
   }
 
   private log(message: string): void {

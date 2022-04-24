@@ -1,4 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-color: floralwhite; }
+:root {
+  --spacing-unit: 8px;
+
+  --margin: var(--spacing-unit);
+  --margin-sm: calc(var(--margin) * 2);
+  --margin-md: calc(var(--margin) * 3);
+  --margin-lg: calc(var(--margin) * 4);
+}

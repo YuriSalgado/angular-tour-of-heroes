@@ -1,7 +1,8 @@
 <app-toolbar [title]="title" [menuItems]="menuItems"></app-toolbar>
 <div class="content">
+  <app-loading></app-loading>
+
   <router-outlet></router-outlet>
-  <div class="messages">
-    <app-messages></app-messages>
-  </div>
+
+  <app-messages></app-messages>
 </div>
