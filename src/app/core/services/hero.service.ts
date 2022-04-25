@@ -17,13 +17,13 @@ export class HeroService {
     private messageService: MessagesService
   ) {}
 
-  getHeroes(): Observable<Hero[]> {
+  findAll(): Observable<Hero[]> {
     return this.http
       .get<Hero[]>(this.heroesUrl)
       .pipe(tap((heroes) => this.log(`fetched ${heroes.length} heroes`)));
   }
 
-  getHero(id: number): Observable<Hero> {
+  findById(id: number): Observable<Hero> {
     return this.http
       .get<Hero>(`${this.heroesUrl}/${id}`)
       .pipe(
@@ -31,6 +31,10 @@ export class HeroService {
           this.log(`fetched head id=${hero.name} and name=${hero.name}`)
         )
       );
+  }
+
+  update(hero: Hero): Observable<Hero> {
+    return this.http.put<Hero>(`${this.heroesUrl}/${hero.id}`, hero);
   }
 
   private log(message: string): void {

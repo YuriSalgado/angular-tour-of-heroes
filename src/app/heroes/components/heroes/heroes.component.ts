@@ -18,6 +18,6 @@ export class HeroesComponent implements OnInit {
   }
 
   getHeroes(): void {
-    this.service.getHeroes().subscribe((heroes) => (this.heroes = heroes));
+    this.service.findAll().subscribe((heroes) => (this.heroes = heroes));
   }
 }
