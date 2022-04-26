@@ -28,13 +28,19 @@ export class HeroService {
       .get<Hero>(`${this.heroesUrl}/${id}`)
       .pipe(
         tap((hero) =>
-          this.log(`fetched head id=${hero.name} and name=${hero.name}`)
+          this.log(`fetched hero id=${hero.name} and name=${hero.name}`)
         )
       );
   }
 
   update(hero: Hero): Observable<Hero> {
-    return this.http.put<Hero>(`${this.heroesUrl}/${hero.id}`, hero);
+    return this.http
+      .put<Hero>(`${this.heroesUrl}/${hero.id}`, hero)
+      .pipe(
+        tap((hero) =>
+          this.log(`update hero id=${hero.name} and name=${hero.name}`)
+        )
+      );
   }
 
   private log(message: string): void {

@@ -1,3 +1,7 @@
 .form {
   margin: var(--margin-sm) 0px var(--margin-sm) 0px;
 }
+.mat-card-avatar {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}
