@@ -27,20 +27,26 @@ export class HeroService {
     return this.http
       .get<Hero>(`${this.heroesUrl}/${id}`)
       .pipe(
-        tap((hero) =>
-          this.log(`fetched hero id=${hero.name} and name=${hero.name}`)
-        )
+        tap((hero) => this.log(`fetched hero ${this.showAttributes(hero)}`))
       );
+  }
+
+  create(hero: Hero): Observable<Hero> {
+    return this.http
+      .post<Hero>(this.heroesUrl, hero)
+      .pipe(tap((hero) => this.log(`add hero ${this.showAttributes(hero)}`)));
   }
 
   update(hero: Hero): Observable<Hero> {
     return this.http
       .put<Hero>(`${this.heroesUrl}/${hero.id}`, hero)
       .pipe(
-        tap((hero) =>
-          this.log(`update hero id=${hero.name} and name=${hero.name}`)
-        )
+        tap((hero) => this.log(`update hero ${this.showAttributes(hero)}`))
       );
+  }
+
+  private showAttributes(hero: Hero) {
+    return `id=${hero.name} and name=${hero.name}`;
   }
 
   private log(message: string): void {
