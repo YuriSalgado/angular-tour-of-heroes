@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmationDialogComponent } from 'src/app/core/components/confirmation-dialog/confirmation-dialog.component';
+import { DialogData } from 'src/app/core/models/dialog-data.modal';
 import { Hero } from 'src/app/core/models/hero.model';
 import { HeroService } from 'src/app/core/services/hero.service';
 
@@ -8,10 +11,10 @@ import { HeroService } from 'src/app/core/services/hero.service';
   styleUrls: ['./heroes.component.scss'],
 })
 export class HeroesComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'name'];
+  displayedColumns: string[] = ['id', 'name', 'actions'];
   heroes: Hero[] = [];
 
-  constructor(private service: HeroService) {}
+  constructor(private dialog: MatDialog, private service: HeroService) {}
 
   ngOnInit(): void {
     this.getHeroes();
@@ -19,5 +22,26 @@ export class HeroesComponent implements OnInit {
 
   getHeroes(): void {
     this.service.findAll().subscribe((heroes) => (this.heroes = heroes));
+  }
+
+  delete(hero: Hero): void {
+    const dialogData: DialogData = {
+      cancelText: 'Cancel',
+      confirmText: 'Delete',
+      content: `Delete ${hero.name}?`,
+    };
+
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      data: dialogData,
+    });
+
+    dialogRef.afterClosed().subscribe((choose) => {
+      if (choose) {
+        this.service.delete(hero).subscribe(() => {
+          // this.heroes = this.heroes.filter((h) => h != hero);
+          this.getHeroes();
+        });
+      }
+    });
   }
 }
