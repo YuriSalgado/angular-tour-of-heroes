@@ -10,4 +10,7 @@
   </mat-card>
 </div>
 
-<app-hero-search [label]="'Hero Search'"></app-hero-search>
+<app-hero-search
+  [label]="'Hero Search'"
+  (selected)="onSelected($event)"
+></app-hero-search>

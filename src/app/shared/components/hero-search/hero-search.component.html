@@ -18,7 +18,7 @@
 
   <mat-autocomplete
     #auto="matAutocomplete"
-    (optionSelected)="searchBox.value = ''"
+    (optionSelected)="onSelected($event); searchBox.value = ''"
   >
     <mat-option *ngFor="let hero of heroes$ | async" [value]="hero">{{
       hero.name
